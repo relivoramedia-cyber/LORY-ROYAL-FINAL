@@ -8,7 +8,7 @@ const admin = require('firebase-admin');
 const { OAuth2Client } = require('google-auth-library');
 const app = express();
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-app.use(helmet({ contentSecurityPolicy: { directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'", "'unsafe-inline'", 'https://accounts.google.com'], styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'], imgSrc: ["'self'", 'data:', 'https:'], connectSrc: ["'self'", 'https://*.googleapis.com'] } } }));
+app.use(helmet({ contentSecurityPolicy: { directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://*.vercel-insights.com', 'https://*.vercel-scripts.com'], styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'], imgSrc: ["'self'", 'data:', 'https:'], connectSrc: ["'self'", 'https://*.googleapis.com', 'https://*.vercel-insights.com'] } } }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.static('public'));
 app.use(cookieParser());
